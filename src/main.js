@@ -280,4 +280,185 @@
     calcFirst.addEventListener("change", update);
     update();
   }
+
+  /* ---------- Portfolio cards (из src/portfolio.js) ---------- */
+  const SAFE_IMG = /^assets\/[\w\-./]+\.(jpe?g|png|webp|avif|gif)$/i;
+  const SAFE_URL = /^https:\/\/[^\s"'<>]+$/i;
+  document.querySelectorAll("[data-portfolio]").forEach((box) => {
+    const list = ((window.PORTFOLIO || {})[box.dataset.portfolio]) || [];
+    const label = document.createElement("p");
+    label.className = "portfolio__label mono";
+    label.textContent = "Примеры работ";
+    box.appendChild(label);
+    const items = list.filter((w) => w && typeof w.img === "string" && SAFE_IMG.test(w.img) && !w.img.includes(".."));
+    if (!items.length) {
+      const e = document.createElement("a");
+      e.className = "work work--empty";
+      e.href = "https://t.me/St1pa4"; e.target = "_blank"; e.rel = "noopener noreferrer";
+      const b = document.createElement("b"); b.textContent = "Скоро добавлю сюда";
+      e.appendChild(b);
+      e.appendChild(document.createTextNode("Свежие примеры покажу в Telegram — напиши, пришлю подборку."));
+      box.appendChild(e);
+      return;
+    }
+    items.forEach((w) => {
+      const link = typeof w.url === "string" && SAFE_URL.test(w.url);
+      const card = document.createElement(link ? "a" : "div");
+      card.className = "work";
+      if (link) { card.href = w.url; card.target = "_blank"; card.rel = "noopener noreferrer"; card.setAttribute("data-cursor", ""); }
+      const img = document.createElement("img");
+      img.src = w.img; img.alt = String(w.title || "Пример работы"); img.loading = "lazy"; img.decoding = "async";
+      const cap = document.createElement("span"); cap.className = "work__cap";
+      const t = document.createElement("span"); t.className = "work__title"; t.textContent = String(w.title || "");
+      cap.appendChild(t);
+      if (w.text) { const d = document.createElement("span"); d.className = "work__text"; d.textContent = String(w.text); cap.appendChild(d); }
+      card.appendChild(img); card.appendChild(cap);
+      box.appendChild(card);
+      if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
+        card.addEventListener("mousemove", (e) => {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+          card.style.transform = "perspective(700px) rotateX(" + (-y * 6) + "deg) rotateY(" + (x * 6) + "deg)";
+        });
+        card.addEventListener("mouseleave", () => { card.style.transform = ""; });
+      }
+    });
+  });
+
+  /* ---------- 3D-фон: вращающийся торический узел (canvas, без библиотек) ---------- */
+  const ambient = document.querySelector(".ambient");
+  if (ambient) {
+    const cv = document.createElement("canvas");
+    cv.className = "ambient__3d";
+    ambient.appendChild(cv);
+    const ctx = cv.getContext("2d");
+    const N = 160, M = 10, R = 0.42;
+    const C = (u) => { const k = 2 + Math.cos(3 * u); return [k * Math.cos(2 * u), k * Math.sin(2 * u), Math.sin(3 * u) * 1.4]; };
+    const V = [];
+    for (let i = 0; i < N; i++) {
+      const u = (i / N) * Math.PI * 2, e = 0.001;
+      const a = C(u), b = C(u + e);
+      let t = [b[0] - a[0], b[1] - a[1], b[2] - a[2]];
+      const tl = Math.hypot(t[0], t[1], t[2]); t = t.map((x) => x / tl);
+      let n = [t[1], -t[0], 0]; if (Math.hypot(n[0], n[1]) < 1e-4) n = [0, t[2], -t[1]];
+      const nl = Math.hypot(n[0], n[1], n[2]); n = n.map((x) => x / nl);
+      const bb = [t[1] * n[2] - t[2] * n[1], t[2] * n[0] - t[0] * n[2], t[0] * n[1] - t[1] * n[0]];
+      const ring = [];
+      for (let j = 0; j < M; j++) {
+        const v = (j / M) * Math.PI * 2, cs = Math.cos(v) * R, sn = Math.sin(v) * R;
+        ring.push([a[0] + cs * n[0] + sn * bb[0], a[1] + cs * n[1] + sn * bb[1], a[2] + cs * n[2] + sn * bb[2]]);
+      }
+      V.push(ring);
+    }
+    let W = 0, H = 0, dpr = 1, mx = 0, my = 0, smx = 0, smy = 0;
+    const resize = () => {
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      W = cv.clientWidth; H = cv.clientHeight;
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    };
+    resize(); window.addEventListener("resize", resize);
+    window.addEventListener("mousemove", (e) => { mx = e.clientX / window.innerWidth - 0.5; my = e.clientY / window.innerHeight - 0.5; }, { passive: true });
+    const BUCKETS = 4;
+    const draw = (time) => {
+      smx += (mx - smx) * 0.04; smy += (my - smy) * 0.04;
+      const sy = window.scrollY || 0;
+      const ay = time * 0.00012 + smx * 0.9 + sy * 0.0004;
+      const ax = 0.6 + smy * 0.6 + sy * 0.0003;
+      const cy = Math.cos(ay), sY = Math.sin(ay), cx = Math.cos(ax), sX = Math.sin(ax);
+      const mobile = W < 700;
+      const scale = Math.min(W, H) * (mobile ? 0.12 : 0.105);
+      const ox = W * (mobile ? 0.5 : 0.74), oy = H * (mobile ? 0.3 : 0.5);
+      const P = new Array(N);
+      for (let i = 0; i < N; i++) {
+        const row = new Array(M);
+        for (let j = 0; j < M; j++) {
+          let [x, y, z] = V[i][j];
+          let x1 = x * cy + z * sY, z1 = -x * sY + z * cy;
+          let y1 = y * cx - z1 * sX, z2 = y * sX + z1 * cx;
+          const f = 9 / (9 + z2);
+          row[j] = [ox + x1 * scale * f, oy + y1 * scale * f, z2];
+        }
+        P[i] = row;
+      }
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+      ctx.lineWidth = 1;
+      const paths = [];
+      for (let b = 0; b < BUCKETS; b++) paths.push(new Path2D());
+      const bucket = (z) => Math.max(0, Math.min(BUCKETS - 1, Math.floor(((z + 3.2) / 6.4) * BUCKETS)));
+      for (let i = 0; i < N; i++) {
+        const i2 = (i + 1) % N;
+        for (let j = 0; j < M; j++) {
+          const a = P[i][j], c = P[i2][j];
+          const p = paths[bucket((a[2] + c[2]) / 2)];
+          p.moveTo(a[0], a[1]); p.lineTo(c[0], c[1]);
+        }
+        if (i % 4 === 0) {
+          for (let j = 0; j < M; j++) {
+            const a = P[i][j], c = P[i][(j + 1) % M];
+            const p = paths[bucket((a[2] + c[2]) / 2)];
+            p.moveTo(a[0], a[1]); p.lineTo(c[0], c[1]);
+          }
+        }
+      }
+      // дальше (z больше) — тусклее, ближе — ярче
+      for (let b = BUCKETS - 1; b >= 0; b--) {
+        const k = (BUCKETS - b) / BUCKETS;
+        ctx.strokeStyle = "rgba(183,171,152," + (0.05 + 0.22 * k * k).toFixed(3) + ")";
+        ctx.stroke(paths[b]);
+      }
+    };
+    if (reduceMotion) { draw(3000); window.addEventListener("resize", () => draw(3000)); }
+    else {
+      const loop = (t) => { if (!document.hidden) draw(t); requestAnimationFrame(loop); };
+      requestAnimationFrame(loop);
+    }
+  }
+
+  /* ---------- Магнитные кнопки (двигается только подпись) ---------- */
+  if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
+    document.querySelectorAll(".pill-btn").forEach((btn) => {
+      const label = btn.querySelector(".pill-btn__label");
+      if (!label) return;
+      btn.addEventListener("mousemove", (e) => {
+        const r = btn.getBoundingClientRect();
+        const x = (e.clientX - (r.left + r.width / 2)) / r.width, y = (e.clientY - (r.top + r.height / 2)) / r.height;
+        label.style.transform = "translate(" + (x * 12) + "px," + (y * 8) + "px)";
+      });
+      btn.addEventListener("mouseleave", () => { label.style.transform = ""; });
+    });
+  }
+
+  /* ---------- Часы Калуги в подвале ---------- */
+  const clock = document.getElementById("clock");
+  if (clock) {
+    const fmt = new Intl.DateTimeFormat("ru-RU", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Moscow" });
+    const tick = () => { clock.textContent = "Калуга · " + fmt.format(new Date()); };
+    tick(); setInterval(tick, 20000);
+  }
+
+  /* ---------- Пасхалка: 5 кликов по логотипу ---------- */
+  const logo = document.querySelector(".header__logo");
+  if (logo && !reduceMotion) {
+    let clicks = 0, timer = 0;
+    logo.addEventListener("click", () => {
+      clicks++; clearTimeout(timer);
+      timer = setTimeout(() => { clicks = 0; }, 2000);
+      if (clicks < 5) return;
+      clicks = 0;
+      const words = ["St1pa4", "✦", "html", "css", "js", "<3", "+", "·"];
+      const r = logo.getBoundingClientRect();
+      for (let i = 0; i < 28; i++) {
+        const s = document.createElement("span");
+        s.className = "spark"; s.textContent = words[i % words.length];
+        s.style.left = (r.left + r.width / 2) + "px"; s.style.top = (r.top + r.height / 2) + "px";
+        document.body.appendChild(s);
+        const ang = Math.random() * Math.PI * 2, d = 90 + Math.random() * 260;
+        s.animate([
+          { transform: "translate(0,0) rotate(0deg)", opacity: 1 },
+          { transform: "translate(" + Math.cos(ang) * d + "px," + (Math.sin(ang) * d + 120) + "px) rotate(" + (Math.random() * 360 - 180) + "deg)", opacity: 0 }
+        ], { duration: 1100 + Math.random() * 700, easing: "cubic-bezier(.2,.7,.3,1)" }).onfinish = () => s.remove();
+      }
+    });
+  }
 })();
