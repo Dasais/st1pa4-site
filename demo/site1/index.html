@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Угли — кофейня (демо-концепт)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="demo-bar"><a href="../../index.html#services">← St1pa4 · портфолио</a><span>Демо-концепт · вымышленный бренд</span></div>
+
+<header class="top">
+  <a class="logo" href="#">Угли<i>.</i></a>
+  <nav id="nav"><a href="#menu">Меню</a><a href="#about">О нас</a><a href="#visit">Как найти</a></nav>
+  <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false"><span></span><span></span></button>
+</header>
+
+<section class="hero">
+  <div class="hero__text">
+    <p class="eyebrow">Кофейня · обжарка · завтраки</p>
+    <h1>Кофе, который <em>согревает</em> по-настоящему</h1>
+    <p class="lead">Обжариваем зерно небольшими партиями и варим так, чтобы вкус был в чашке, а не в рекламе.</p>
+    <div class="hero__cta"><a class="btn" href="#menu">Смотреть меню</a><a class="btn btn--ghost" href="#visit">Как найти</a></div>
+  </div>
+  <div class="cup" aria-hidden="true">
+    <div class="cup__steam"><i></i><i></i><i></i></div>
+    <div class="cup__body"></div><div class="cup__handle"></div><div class="cup__plate"></div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <h2>Меню</h2>
+  <div class="tabs" role="tablist">
+    <button class="tab is-on" type="button" data-tab="coffee" role="tab">Кофе</button>
+    <button class="tab" type="button" data-tab="tea" role="tab">Чай</button>
+    <button class="tab" type="button" data-tab="sweet" role="tab">Десерты</button>
+  </div>
+  <div class="panel is-on" id="coffee">
+    <article><h3>Эспрессо</h3><p>Насыщенный, с карамельной сладостью</p><b>150 ₽</b></article>
+    <article><h3>Капучино</h3><p>Бархатная пенка, двойной шот</p><b>260 ₽</b></article>
+    <article><h3>Флэт уайт</h3><p>Больше кофе, меньше молока</p><b>290 ₽</b></article>
+    <article><h3>Воронка V60</h3><p>Светлая обжарка, чистый вкус</p><b>340 ₽</b></article>
+  </div>
+  <div class="panel" id="tea">
+    <article><h3>Улун</h3><p>Цветочный, мягкий, на 3 проливки</p><b>280 ₽</b></article>
+    <article><h3>Облепиховый</h3><p>С мёдом и имбирём</p><b>270 ₽</b></article>
+    <article><h3>Зелёный сенча</h3><p>Свежий и травяной</p><b>240 ₽</b></article>
+  </div>
+  <div class="panel" id="sweet">
+    <article><h3>Круассан</h3><p>Масляный, с хрустящей коркой</p><b>190 ₽</b></article>
+    <article><h3>Чизкейк</h3><p>Нью-йоркский, с ягодным соусом</p><b>330 ₽</b></article>
+    <article><h3>Брауни</h3><p>Тёмный шоколад и орехи</p><b>220 ₽</b></article>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div><h2>Мы любим <em>медленное</em> утро</h2></div>
+  <div class="about__cols">
+    <p>Зерно берём у небольших ферм и обжариваем у себя — каждую неделю свежая партия.</p>
+    <p>Кофе можно взять с собой или остаться: у нас есть тихий зал, розетки и быстрый интернет.</p>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <h2>Как найти</h2>
+  <p>ул. Примерная, 12 · ежедневно с 8:00 до 21:00</p>
+  <a class="btn" href="#">Забронировать столик</a>
+</section>
+
+<footer>© 2026 «Угли» — учебный демо-концепт, не является реальным заведением.</footer>
+<script src="script.js" defer></script>
+</body>
+</html>

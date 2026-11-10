@@ -283,7 +283,7 @@
 
   /* ---------- Portfolio cards (из src/portfolio.js) ---------- */
   const SAFE_IMG = /^assets\/[\w\-./]+\.(jpe?g|png|webp|avif|gif)$/i;
-  const SAFE_URL = /^https:\/\/[^\s"'<>]+$/i;
+  const SAFE_URL = /^(https:\/\/[^\s"'<>]+|demo\/[\w\-./]+\.html)$/i;
   document.querySelectorAll("[data-portfolio]").forEach((box) => {
     const list = ((window.PORTFOLIO || {})[box.dataset.portfolio]) || [];
     const label = document.createElement("p");

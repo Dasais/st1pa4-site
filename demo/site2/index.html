@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Ритм — студия тренировок (демо-концепт)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="demo-bar"><a href="../../index.html#services">← St1pa4 · портфолио</a><span>Демо-концепт · вымышленный бренд</span></div>
+
+<header class="top"><a class="logo" href="#">РИТМ<i></i></a><nav><a href="#programs">Программы</a><a href="#schedule">Расписание</a><a href="#prices">Цены</a></nav><a class="chip" href="#prices">Пробная</a></header>
+
+<section class="hero">
+  <p class="tag">студия функциональных тренировок</p>
+  <h1>Двигайся<br><span>в своём ритме</span></h1>
+  <p class="lead">Короткие тренировки с тренером, музыка, которая заводит, и группа, которая не даст пропустить.</p>
+  <a class="btn" href="#schedule">Выбрать занятие</a>
+  <div class="ring" aria-hidden="true"></div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div><span>HIIT</span><span>·</span><span>Силовые</span><span>·</span><span>Йога</span><span>·</span><span>Стретчинг</span><span>·</span><span>HIIT</span><span>·</span><span>Силовые</span><span>·</span><span>Йога</span><span>·</span><span>Стретчинг</span><span>·</span></div></div>
+
+<section id="programs">
+  <h2>Программы</h2>
+  <div class="cards">
+    <article><span class="n">01</span><h3>HIIT</h3><p>Интервальная нагрузка на 40 минут. Сжигает много, занимает мало.</p></article>
+    <article><span class="n">02</span><h3>Силовые</h3><p>Работа со свободными весами и своим весом. Для набора формы.</p></article>
+    <article><span class="n">03</span><h3>Йога и стретчинг</h3><p>Гибкость, дыхание и восстановление после рабочей недели.</p></article>
+  </div>
+</section>
+
+<section id="schedule" class="sched">
+  <h2>Расписание</h2>
+  <div class="days" id="days">
+    <button class="day is-on" type="button" data-d="0">Пн</button><button class="day" type="button" data-d="1">Вт</button><button class="day" type="button" data-d="2">Ср</button><button class="day" type="button" data-d="3">Чт</button><button class="day" type="button" data-d="4">Пт</button><button class="day" type="button" data-d="5">Сб</button>
+  </div>
+  <ul class="list" id="list"></ul>
+</section>
+
+<section id="prices">
+  <h2>Абонементы</h2>
+  <div class="plans">
+    <article><h3>Пробная</h3><p class="price">0 ₽</p><ul><li>Одно занятие на выбор</li><li>Знакомство с тренером</li></ul><a class="btn btn--line" href="#">Записаться</a></article>
+    <article class="hot"><h3>Месяц</h3><p class="price">4 900 ₽</p><ul><li>8 занятий в месяц</li><li>Любые направления</li><li>Заморозка на 7 дней</li></ul><a class="btn" href="#">Выбрать</a></article>
+    <article><h3>Безлимит</h3><p class="price">7 900 ₽</p><ul><li>Сколько угодно занятий</li><li>Все программы</li></ul><a class="btn btn--line" href="#">Выбрать</a></article>
+  </div>
+</section>
+
+<footer>© 2026 «Ритм» — учебный демо-концепт, не является реальной студией. Цены условные.</footer>
+<script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Лист — трекер задач (демо-концепт)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="demo-bar"><a href="../../index.html#services">← St1pa4 · портфолио</a><span>Демо-концепт · вымышленный продукт</span></div>
+
+<header class="top"><a class="logo" href="#"><span class="mark"></span>Лист</a><nav><a href="#features">Возможности</a><a href="#pricing">Тарифы</a><a href="#faq">Вопросы</a></nav><a class="btn btn--sm" href="#pricing">Попробовать</a></header>
+
+<section class="hero">
+  <p class="pill">Новое · умные напоминания</p>
+  <h1>Задачи, которые <span>делаются сами</span></h1>
+  <p class="lead">Лист собирает дела в одном месте и подсказывает, с чего начать день. Никаких лишних кнопок.</p>
+  <div class="cta"><a class="btn" href="#pricing">Начать бесплатно</a><a class="btn btn--ghost" href="#features">Как это работает</a></div>
+
+  <div class="app" aria-label="Пример интерфейса">
+    <div class="app__bar"><i></i><i></i><i></i><b>Сегодня</b><span id="left">3 осталось</span></div>
+    <ul id="todo">
+      <li><button type="button" class="chk" aria-pressed="false"></button><span>Подготовить макет для клиента</span><em>дизайн</em></li>
+      <li><button type="button" class="chk" aria-pressed="false"></button><span>Ответить на письма</span><em>почта</em></li>
+      <li><button type="button" class="chk" aria-pressed="false"></button><span>Созвон с командой в 15:00</span><em>встреча</em></li>
+      <li class="done"><button type="button" class="chk" aria-pressed="true"></button><span>Оплатить хостинг</span><em>финансы</em></li>
+    </ul>
+    <p class="app__hint">Попробуйте нажать на кружок</p>
+  </div>
+</section>
+
+<section id="features">
+  <h2>Всё важное — и ничего лишнего</h2>
+  <div class="grid">
+    <article><div class="ico">✓</div><h3>Быстрый ввод</h3><p>Напишите «завтра в 10 созвон» — Лист сам поймёт дату и время.</p></article>
+    <article><div class="ico">⌁</div><h3>Фокус дня</h3><p>Показывает три главные задачи, чтобы не тонуть в списке дел.</p></article>
+    <article><div class="ico">◐</div><h3>Тёмная тема</h3><p>Комфортно работать и днём, и поздно вечером.</p></article>
+  </div>
+</section>
+
+<section id="pricing" class="price">
+  <h2>Тарифы</h2>
+  <div class="toggle"><span id="lblM" class="on">Месяц</span><button type="button" id="sw" class="sw" role="switch" aria-checked="false" aria-label="Годовая оплата"><i></i></button><span id="lblY">Год <small>−20%</small></span></div>
+  <div class="plans">
+    <article><h3>Старт</h3><p class="amt">0 ₽</p><ul><li>До 20 задач</li><li>Один проект</li></ul><a class="btn btn--ghost" href="#">Выбрать</a></article>
+    <article class="hot"><h3>Про</h3><p class="amt"><span id="proPrice">390</span> ₽<small id="per">/ мес</small></p><ul><li>Безлимит задач</li><li>Напоминания</li><li>Совместная работа</li></ul><a class="btn" href="#">Выбрать</a></article>
+    <article><h3>Команда</h3><p class="amt"><span id="teamPrice">790</span> ₽<small id="per2">/ мес</small></p><ul><li>Всё из Про</li><li>До 10 человек</li></ul><a class="btn btn--ghost" href="#">Выбрать</a></article>
+  </div>
+</section>
+
+<section id="faq">
+  <h2>Вопросы</h2>
+  <div class="faq">
+    <details><summary>Можно ли пользоваться бесплатно?</summary><p>Да, тариф «Старт» бесплатный и без ограничения по времени.</p></details>
+    <details><summary>Есть ли мобильное приложение?</summary><p>Это учебный концепт, поэтому приложения нет — но так мог бы выглядеть его сайт.</p></details>
+    <details><summary>Можно ли отменить подписку?</summary><p>В любой момент одним нажатием в настройках.</p></details>
+  </div>
+</section>
+
+<footer>© 2026 «Лист» — учебный демо-концепт, не является реальным продуктом. Цены условные.</footer>
+<script src="script.js" defer></script>
+</body>
+</html>
