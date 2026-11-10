@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>St1pa4 — веб дизайн · сайты, презентации, Discord</title>
+<meta name="description" content="St1pa4 веб дизайн — создание сайтов с нуля, презентаций и оформление Discord-серверов. Калужская обл. Первое оформление — скидка.">
+<meta name="theme-color" content="#0d0d0d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- ============ AMBIENT BACKGROUND ============ -->
+<div class="ambient" aria-hidden="true"><i class="ambient__blob ambient__blob--1"></i><i class="ambient__blob ambient__blob--2"></i><i class="ambient__blob ambient__blob--3"></i></div>
+
+<!-- ============ INTRO OVERLAY ============ -->
+<div class="intro" id="intro" aria-hidden="false">
+  <div class="intro__inner">
+    <p class="intro__kicker"><span class="mono">St1pa4</span> · веб дизайн</p>
+    <h1 class="intro__title">
+      <span class="intro__line">Хочешь увидеть</span>
+      <span class="intro__line intro__line--indent"><em>услуги?</em></span>
+    </h1>
+    <div class="intro__hint">
+      <span class="mono">прокрути вниз</span>
+      <span class="intro__arrow" aria-hidden="true">
+        <svg width="18" height="42" viewBox="0 0 18 42" fill="none"><path d="M9 0v38m0 0 6.5-6.5M9 38 2.5 31.5" stroke="currentColor" stroke-width="1.5"/></svg>
+      </span>
+    </div>
+  </div>
+  <button class="intro__skip mono" id="introSkip" type="button">открыть сайт</button>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="header">
+  <a class="header__logo" href="#top" data-cursor>St1pa4<span class="header__logo-reg">®</span></a>
+  <nav class="header__nav" aria-label="Основная навигация">
+    <a href="#services" class="nav-link" data-cursor><span class="nav-link__stack"><span>Услуги</span><span aria-hidden="true">Услуги</span></span></a>
+    <a href="#discount" class="nav-link" data-cursor><span class="nav-link__stack"><span>Скидка</span><span aria-hidden="true">Скидка</span></span></a>
+    <a href="#contacts" class="nav-link" data-cursor><span class="nav-link__stack"><span>Контакты</span><span aria-hidden="true">Контакты</span></span></a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__center">
+      <p class="hero__kicker mono reveal-line">веб-дизайн · разработка · оформление</p>
+      <h2 class="hero__title" aria-label="St1pa4 — делаю цифровые вещи, которые работают">
+        <span class="hero__row split-chars">St1pa4</span>
+        <span class="hero__row hero__row--indent split-chars">делаю сайты,</span>
+        <span class="hero__row split-chars">презентации</span>
+        <span class="hero__row hero__row--indent hero__row--serif split-chars">и Discord.</span>
+      </h2>
+    </div>
+    <div class="hero__meta mono">
+      <span>Калужская обл. — вся Россия</span>
+      <span class="hero__meta-center">прокрути, чтобы узнать больше</span>
+      <span>© 2026</span>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>сайты с нуля</span><i>·</i><span>презентации</span><i>·</i><span>discord-серверы</span><i>·</i><span>минимализм</span><i>·</i>
+      <span>сайты с нуля</span><i>·</i><span>презентации</span><i>·</i><span>discord-серверы</span><i>·</i><span>минимализм</span><i>·</i>
+    </div>
+  </div>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="services" id="services">
+    <div class="services__head">
+      <h2 class="section-title split-lines">Услуги</h2>
+      <p class="services__sub reveal-line">Три направления. Нажми на колонку — откроются подробности и тарифы.</p>
+    </div>
+
+    <div class="services__grid">
+
+      <!-- 01 Сайты -->
+      <article class="svc" data-col="1">
+        <button class="svc__head" type="button" aria-expanded="false" aria-controls="svc-body-1" data-cursor>
+          <span class="svc__num mono">01</span>
+          <span class="svc__title">Создание сайта <em>с&nbsp;нуля</em></span>
+          <span class="svc__plus" aria-hidden="true"></span>
+        </button>
+        <p class="svc__teaser">Лендинги и многостраничные сайты под ключ: дизайн, вёрстка, анимации, запуск.</p>
+
+        <div class="svc__body" id="svc-body-1" role="region" aria-label="Подробности: создание сайтов">
+          <div class="svc__body-inner">
+
+            <div class="tariff">
+              <div class="tariff__row">
+                <h3 class="tariff__name">Стандарт</h3>
+                <span class="tariff__price mono">от 5 000 ₽</span>
+              </div>
+              <ul class="tariff__list">
+                <li>Одностраничный сайт (лендинг)</li>
+                <li>Адаптив под телефон и компьютер</li>
+                <li>Базовые анимации и плавный скролл</li>
+                <li>Форма заявки и кнопки связи</li>
+                <li>Срок: 3–5 дней</li>
+              </ul>
+            </div>
+
+            <div class="tariff tariff--mid">
+              <div class="tariff__row">
+                <h3 class="tariff__name">Продвинутый</h3>
+                <span class="tariff__price mono">от 15 000 ₽</span>
+              </div>
+              <ul class="tariff__list">
+                <li>До 5 страниц с уникальным дизайном</li>
+                <li>Сложные анимации, параллакс, эффекты</li>
+                <li>Базовая SEO-настройка и скорость</li>
+                <li>Подключение аналитики</li>
+                <li>Срок: 7–14 дней</li>
+              </ul>
+            </div>
+
+            <div class="tariff">
+              <div class="tariff__row">
+                <h3 class="tariff__name">Макс</h3>
+                <span class="tariff__price mono">от 40 000 ₽</span>
+              </div>
+              <ul class="tariff__list">
+                <li>Сайт любой сложности: магазин, каталог, блог</li>
+                <li>Админ-панель и личный кабинет</li>
+                <li>Интеграции: оплата, доставка, CRM</li>
+                <li>Техподдержка — 1 месяц в подарок</li>
+                <li>Срок: от 3 недель</li>
+              </ul>
+            </div>
+
+            <p class="svc__note"><span class="dot" aria-hidden="true"></span>На первое оформление действует скидка — подробности внизу страницы.</p>
+            <a class="pill-btn" href="#contacts" data-cursor><span class="pill-btn__label">Заказать сайт</span><span class="pill-btn__fill" aria-hidden="true"></span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 Презентации -->
+      <article class="svc" data-col="2">
+        <button class="svc__head" type="button" aria-expanded="false" aria-controls="svc-body-2" data-cursor>
+          <span class="svc__num mono">02</span>
+          <span class="svc__title">Создание <em>презентаций</em></span>
+          <span class="svc__plus" aria-hidden="true"></span>
+        </button>
+        <p class="svc__teaser">Презентации, которые не стыдно показать: чистая типографика, сильная подача.</p>
+
+        <div class="svc__body" id="svc-body-2" role="region" aria-label="Подробности: создание презентаций">
+          <div class="svc__body-inner">
+            <ul class="detail-list">
+              <li><span class="mono">Форматы</span>PowerPoint, Google Slides, PDF — под любой экран</li>
+              <li><span class="mono">Дизайн</span>единый стиль, обложка, инфографика, диаграммы</li>
+              <li><span class="mono">Сценарий</span>помогу выстроить структуру и логику выступления</li>
+              <li><span class="mono">Сроки</span>от 2 дней в зависимости от объёма</li>
+              <li><span class="mono">Цена</span>от 3 000 ₽ за презентацию — считаю по количеству слайдов</li>
+            </ul>
+            <p class="svc__note"><span class="dot" aria-hidden="true"></span>Есть примеры работ — напиши в Telegram, покажу.</p>
+            <a class="pill-btn" href="#contacts" data-cursor><span class="pill-btn__label">Заказать презентацию</span><span class="pill-btn__fill" aria-hidden="true"></span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 Discord -->
+      <article class="svc" data-col="3">
+        <button class="svc__head" type="button" aria-expanded="false" aria-controls="svc-body-3" data-cursor>
+          <span class="svc__num mono">03</span>
+          <span class="svc__title">Оформление <em>Discord</em></span>
+          <span class="svc__plus" aria-hidden="true"></span>
+        </button>
+        <p class="svc__teaser">Сервер «под ключ» на любую тему: игры, учёба, комьюнити, бизнес.</p>
+
+        <div class="svc__body" id="svc-body-3" role="region" aria-label="Подробности: оформление Discord-серверов">
+          <div class="svc__body-inner">
+            <ul class="detail-list">
+              <li><span class="mono">Структура</span>категории, каналы, роли и права под твою тему</li>
+              <li><span class="mono">Визуал</span>аватар, баннер, иконки и эмодзи сервера</li>
+              <li><span class="mono">Боты</span>подключу и настрою модерацию, музыку, статистику</li>
+              <li><span class="mono">Темы</span>игры, аниме, учёба, NFT, бизнес — любая идея</li>
+              <li><span class="mono">Цена</span>от 2 500 ₽ за сервер — зависит от объёма работ</li>
+            </ul>
+            <p class="svc__note"><span class="dot" aria-hidden="true"></span>Расскажи идею сервера — предложу структуру бесплатно.</p>
+            <a class="pill-btn" href="#contacts" data-cursor><span class="pill-btn__label">Оформить сервер</span><span class="pill-btn__fill" aria-hidden="true"></span></a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section class="process" id="process">
+    <h2 class="section-title split-lines">Как я работаю</h2>
+    <ol class="process__list">
+      <li class="process__step reveal-line"><span class="mono">01</span><h3>Обсуждаем</h3><p>Ты рассказываешь идею, я задаю вопросы и называю точную цену и срок.</p></li>
+      <li class="process__step reveal-line"><span class="mono">02</span><h3>Делаю макет</h3><p>Показываю дизайн до начала разработки — правки на этом этапе бесплатные.</p></li>
+      <li class="process__step reveal-line"><span class="mono">03</span><h3>Собираю</h3><p>Вёрстка, анимации, проверка на телефонах и в разных браузерах.</p></li>
+      <li class="process__step reveal-line"><span class="mono">04</span><h3>Запуск</h3><p>Выкладываю на хостинг, объясняю, как всё устроено, остаюсь на связи.</p></li>
+    </ol>
+  </section>
+
+  <!-- ============ CALCULATOR ============ -->
+  <section class="calc" id="calc">
+    <h2 class="section-title split-lines">Прикинь цену</h2>
+    <p class="calc__sub reveal-line">Выбери, что нужно — увидишь примерную стоимость. Точную цену назову после разговора.</p>
+    <div class="calc__box">
+      <fieldset class="calc__options">
+        <legend class="mono">Что делаем</legend>
+        <label class="calc__opt"><input type="radio" name="svc" value="5000" checked><span><b>Сайт · Стандарт</b><i class="mono">от 5 000 ₽</i></span></label>
+        <label class="calc__opt"><input type="radio" name="svc" value="15000"><span><b>Сайт · Продвинутый</b><i class="mono">от 15 000 ₽</i></span></label>
+        <label class="calc__opt"><input type="radio" name="svc" value="40000"><span><b>Сайт · Макс</b><i class="mono">от 40 000 ₽</i></span></label>
+        <label class="calc__opt"><input type="radio" name="svc" value="3000"><span><b>Презентация</b><i class="mono">от 3 000 ₽</i></span></label>
+        <label class="calc__opt"><input type="radio" name="svc" value="2500"><span><b>Discord-сервер</b><i class="mono">от 2 500 ₽</i></span></label>
+      </fieldset>
+      <div class="calc__result">
+        <label class="calc__check"><input type="checkbox" id="calcFirst" checked><span>Это мой первый заказ (−20%)</span></label>
+        <p class="calc__label mono">примерная стоимость</p>
+        <p class="calc__price" id="calcPrice" aria-live="polite">от 4 000 ₽</p>
+        <p class="calc__old mono" id="calcOld">вместо 5 000 ₽</p>
+        <a class="pill-btn pill-btn--accent" href="#contacts" data-cursor><span class="pill-btn__label">Обсудить заказ</span><span class="pill-btn__fill" aria-hidden="true"></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DISCOUNT ============ -->
+  <section class="discount" id="discount">
+    <p class="discount__kicker mono reveal-line">специальное предложение</p>
+    <h2 class="discount__title split-lines">Первое оформление — <em>скидка</em></h2>
+    <p class="discount__text reveal-line">Делаешь первый заказ? Скидка <strong>−20%</strong> действует на любую услугу: сайт, презентацию или оформление Discord-сервера. Просто упомяни это при обращении.</p>
+    <a class="pill-btn pill-btn--accent" href="#contacts" data-cursor><span class="pill-btn__label">Забрать скидку</span><span class="pill-btn__fill" aria-hidden="true"></span></a>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="faq" id="faq">
+    <h2 class="section-title split-lines">Частые вопросы</h2>
+    <div class="faq__list">
+      <details class="faq__item"><summary>Как оплачивать?</summary><p>Обычно часть до начала работы и остаток после того, как тебя всё устроило. Детали обсуждаем в личных сообщениях.</p></details>
+      <details class="faq__item"><summary>Сколько правок входит в цену?</summary><p>Правки по макету делаем, пока результат не понравится. Масштабные изменения концепции уже после сборки обсуждаются отдельно.</p></details>
+      <details class="faq__item"><summary>Можно ли заказать сайт на своём домене и хостинге?</summary><p>Да. Могу помочь выбрать хостинг и домен или загрузить готовый сайт на твой.</p></details>
+      <details class="faq__item"><summary>Работаешь с людьми не из Калужской области?</summary><p>Да, работаю по всей России — всё общение онлайн.</p></details>
+      <details class="faq__item"><summary>Как получить скидку?</summary><p>Просто напиши, что это первый заказ — скидка −20% применяется к любой услуге.</p></details>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTS ============ -->
+  <section class="contacts" id="contacts">
+    <h2 class="section-title split-lines">Контакты</h2>
+    <p class="contacts__sub reveal-line">Напиши — обсудим задачу и посчитаю стоимость. Отвечаю быстро.</p>
+
+    <ul class="contacts__list">
+      <li>
+        <a class="contact-link" href="https://t.me/St1pa4" target="_blank" rel="noopener noreferrer" data-cursor>
+          <span class="contact-link__label mono">Telegram</span>
+          <span class="contact-link__value"><span class="contact-link__stack"><span>@St1pa4</span><span aria-hidden="true">@St1pa4</span></span></span>
+        </a>
+      </li>
+      <li>
+        <a class="contact-link" href="tel:+79066438010" data-cursor>
+          <span class="contact-link__label mono">Телефон</span>
+          <span class="contact-link__value"><span class="contact-link__stack"><span>8 906 643-80-10</span><span aria-hidden="true">8 906 643-80-10</span></span></span>
+        </a>
+      </li>
+      <li>
+        <a class="contact-link" href="https://vk.ru/st1pa4" target="_blank" rel="noopener noreferrer" data-cursor>
+          <span class="contact-link__label mono">ВКонтакте</span>
+          <span class="contact-link__value"><span class="contact-link__stack"><span>vk.ru/st1pa4</span><span aria-hidden="true">vk.ru/st1pa4</span></span></span>
+        </a>
+      </li>
+      <li class="contact-link contact-link--static">
+        <span class="contact-link__label mono">Адрес</span>
+        <span class="contact-link__value">Калужская обл., Россия</span>
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span class="mono">© 2026 St1pa4 · веб дизайн</span>
+  <a href="#top" class="footer__top mono" data-cursor>наверх ↑</a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script src="src/main.js" defer></script>
+</body>
+</html>
