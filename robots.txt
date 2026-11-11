@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://st1pa4.ru/sitemap.xml
